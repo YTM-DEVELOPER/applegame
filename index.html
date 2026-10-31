@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f5ef">
+  <meta name="description" content="사과 숫자를 맞추고 기록에 도전하는 사과 게임">
+  <title>사과 게임</title>
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+  <main class="game-shell">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="사과 게임 홈">
+        <span class="brand-icon" aria-hidden="true">🍎</span>
+        <span><span class="eyebrow">A LITTLE BRAIN BREAK</span><span class="brand-title">사과 게임</span></span>
+      </a>
+      <button class="icon-button" id="restart" type="button" aria-label="게임 다시 시작" title="다시 시작">↻</button>
+    </header>
+
+    <section class="intro" aria-labelledby="page-title">
+      <div><p class="eyebrow">숫자 감각을 깨워봐요</p><h1 id="page-title">사과를 모아 <span>10</span>을 만들어요</h1></div>
+      <p class="intro-copy">드래그 한 번으로 숫자를 맞추고<br>최고 기록에 도전해 보세요.</p>
+    </section>
+
+    <nav class="mode-tabs" aria-label="게임 모드">
+      <button class="mode-tab is-active" id="solo-mode" type="button" aria-pressed="true">혼자 하기</button>
+      <button class="mode-tab" id="duel-mode" type="button" aria-pressed="false">같이 하기</button>
+      <button class="mode-tab" id="online-mode" type="button" aria-pressed="false">온라인 대전</button>
+    </nav>
+
+    <section class="online-panel" id="online-panel" aria-label="온라인 대전 방" hidden>
+      <div class="online-copy"><strong>친구와 대전하기</strong><span>방을 만들거나 친구의 방 코드로 참가하세요.</span></div>
+      <div class="room-actions">
+        <button class="button button-primary" id="create-room" type="button">방 만들기</button>
+        <label class="sr-only" for="room-code">방 코드</label>
+        <input id="room-code" type="text" maxlength="40" autocomplete="off" placeholder="방 코드 입력">
+        <button class="button button-secondary" id="copy-code" type="button" hidden>코드 복사</button>
+        <button class="button button-secondary" id="join-room" type="button">참가</button>
+        <button class="button button-quiet" id="leave-room" type="button" hidden>나가기</button>
+      </div>
+      <p class="online-status" id="online-status" aria-live="polite">상대와 같은 웹 주소를 열어 주세요.</p>
+    </section>
+
+    <section class="duel-scoreboard" id="duel-scores" aria-label="플레이어 점수" hidden>
+      <div class="player-score" id="player-one"><span class="player-dot"></span><span>플레이어 1</span><strong>0</strong></div>
+      <span class="versus">VS</span>
+      <div class="player-score" id="player-two"><span class="player-dot"></span><span>플레이어 2</span><strong>0</strong></div>
+    </section>
+
+    <section class="game-card" aria-label="사과 게임">
+      <div class="game-toolbar">
+        <div class="turn-label"><span class="live-dot"></span><span id="turn-label">나의 기록 도전</span></div>
+        <div class="round-label" id="round-label">ROUND 01</div>
+      </div>
+      <div class="stats" aria-label="현재 기록">
+        <div class="stat"><span class="stat-label" id="score-label">점수</span><strong id="score">0</strong></div>
+        <div class="stat stat-time"><span class="stat-label">남은 시간</span><strong id="time">02:00</strong></div>
+        <div class="stat"><span class="stat-label">없앤 사과</span><strong id="cleared">0</strong></div>
+      </div>
+      <div class="timer-track" aria-hidden="true"><div class="timer-fill" id="progress"></div></div>
+      <div class="board-frame">
+        <div class="board" id="board" role="grid" aria-label="숫자가 적힌 사과 게임판"></div>
+        <div class="game-overlay" id="shade" hidden>
+          <div class="result-card" role="dialog" aria-modal="true" aria-labelledby="result-title">
+            <span class="result-icon" id="result-emoji" aria-hidden="true">🍎</span>
+            <p class="eyebrow" id="result-kicker">ROUND COMPLETE</p>
+            <h2 id="result-title">Time Out!</h2>
+            <p class="result-copy" id="result-text">최종 점수 <strong id="final-score">0</strong>점</p>
+            <button class="button button-primary result-button" id="play-again" type="button">한 판 더 하기</button>
+          </div>
+        </div>
+      </div>
+      <p class="game-message" id="message" aria-live="polite">마우스나 손가락으로 사과를 드래그해 보세요.</p>
+    </section>
+
+    <footer class="instructions"><span class="instruction-icon" aria-hidden="true">✦</span><p>사과를 직사각형으로 선택해 숫자 합을 <strong>정확히 10</strong>으로 맞추면 사라져요.<br>한 번에 더 많이 없애면 점수도 쑥쑥!</p></footer>
+    <p class="credits">MADE FOR A MOMENT OF FUN</p>
+  </main>
+  <script src="assets/game.js" defer></script>
+</body>
+</html>
